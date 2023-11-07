@@ -1,5 +1,4 @@
 import bookModel from "../models/bookModel.js";
-
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -89,8 +88,12 @@ export const updateBookDetailController = async (req, res) => {
 // Delete a book
 export const deleteBookController = async (req, res) => {
   try {
-    await bookModel.findByIdAndRemove(req.params.bookId);
-    res.status(204).send();
+    const book = await bookModel.findById(req.params.bookId);
+    await bookModel.findByIdAndDelete(req.params.bookId);
+    res.status(200).send({
+      success: true,
+      message: `${book.title} book deleted successfully`,
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
