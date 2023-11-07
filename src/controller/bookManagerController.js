@@ -1,7 +1,4 @@
 import bookModel from "../models/bookModel.js";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 // Create a new book
 export const newBookCreateController = async (req, res) => {
@@ -41,7 +38,7 @@ export const newBookCreateController = async (req, res) => {
 
     res.status(201).send({
       success: true,
-      message: "New book saved Successfully",
+      message: "New book saved Successfully.",
       newBook,
     });
   } catch (error) {
@@ -53,7 +50,11 @@ export const newBookCreateController = async (req, res) => {
 export const getBookListController = async (req, res) => {
   try {
     const books = await bookModel.find();
-    res.json(books);
+    if (books.length) {
+      res.status(201).send(books);
+    } else {
+      res.status(200).send({ message: "There are 0 book in the list" });
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -63,7 +64,7 @@ export const getBookListController = async (req, res) => {
 export const getBookDetailByIdController = async (req, res) => {
   try {
     const book = await bookModel.findById(req.params.bookId);
-    res.json(book);
+    res.status(200).send(book);
   } catch (error) {
     res
       .status(400)
@@ -79,7 +80,7 @@ export const updateBookDetailController = async (req, res) => {
       req.body,
       { new: true }
     );
-    res.json(updatedBook);
+    res.status(200).send(updatedBook);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
