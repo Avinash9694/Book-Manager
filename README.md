@@ -98,6 +98,18 @@ To run the Book Manager API locally, follow these steps:
 
 7. You can test the API endpoints using a tool like Postman.
 
+
+## Assumptions made during the development process:
+
+1. **Data Types Assumption:** Title, Author, and Summary fields are assumed to be of type string.
+
+2. **Data Validation:** All the fields (Title, Author, and Summary) are required when creating a new book. Empty or missing fields will result in an error.
+
+3. **Uniqueness of Titles:** The "title" field of a book is assumed to be unique, ensuring that there are no two books with the same title in the database.
+
+4. **No Books in the Database:** In cases where there are no books stored in the database, the application should return a message indicating that "there are 0 books."
+
+
 ## Notes
 
 - This API uses MongoDB as the database. Ensure that MongoDB is running and accessible from your local environment.
