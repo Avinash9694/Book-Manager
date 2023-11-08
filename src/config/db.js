@@ -8,7 +8,6 @@ const connectDB = async () => {
       "mongodb+srv://avinash:avinashsahu@cluster0.qejlchd.mongodb.net/";
 
     const conn = await mongoose.connect(mongoURL);
-    console.log(`connected to mongodb database `);
   } catch (error) {
     throw error;
   }
