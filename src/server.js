@@ -19,9 +19,7 @@ app.use(express.json());
 app.use("/api/v1", bookManagerRoutes);
 
 //rest api
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to Book Manager App</h1>");
-});
+app.get("/", (req, res) => {});
 
 const port = process.env.PORT || 8080;
 
