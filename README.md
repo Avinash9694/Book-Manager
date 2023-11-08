@@ -73,7 +73,7 @@ To run the Book Manager API locally, follow these steps:
 2. Navigate to the project directory:
 
    ```
-   cd src
+   cd .\Book-Manager\src
    ```
 
 3. Install the required dependencies:
